@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyName>Abc.Pages</AssemblyName>
+    <RootNamespace>Abc.Pages</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Facade\Facade.csproj" />
+    <ProjectReference Include="..\INfra\Infra.csproj" />
+  </ItemGroup>
+
+</Project>

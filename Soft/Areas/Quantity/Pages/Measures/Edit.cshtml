@@ -1,0 +1,55 @@
+﻿@page
+@model Soft.Areas.Quantity.Pages.Measures.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>MeasureView</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MeasureView.Id" />
+            <div class="form-group">
+                <label asp-for="MeasureView.Name" class="control-label"></label>
+                <input asp-for="MeasureView.Name" class="form-control" />
+                <span asp-validation-for="MeasureView.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MeasureView.Code" class="control-label"></label>
+                <input asp-for="MeasureView.Code" class="form-control" />
+                <span asp-validation-for="MeasureView.Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MeasureView.Definition" class="control-label"></label>
+                <input asp-for="MeasureView.Definition" class="form-control" />
+                <span asp-validation-for="MeasureView.Definition" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MeasureView.ValidFrom" class="control-label"></label>
+                <input asp-for="MeasureView.ValidFrom" class="form-control" />
+                <span asp-validation-for="MeasureView.ValidFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MeasureView.ValidTo" class="control-label"></label>
+                <input asp-for="MeasureView.ValidTo" class="form-control" />
+                <span asp-validation-for="MeasureView.ValidTo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
