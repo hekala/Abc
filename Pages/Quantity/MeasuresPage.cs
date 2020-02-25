@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 
-namespace Pages
+namespace Abc.Pages.Quantity
 {
     public abstract class MeasuresPage : PageModel
     {

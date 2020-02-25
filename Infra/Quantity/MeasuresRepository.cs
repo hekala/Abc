@@ -1,13 +1,19 @@
-﻿using Abc.Domain.Quantity;
+﻿using Abc.Data.Quantity;
+using Abc.Domain.Quantity;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Abc.Infra.Quantity
 {
     public class MeasuresRepository : IMeasuresRepository
     {
-        private readonly QuantityDbContext db;
+        protected internal QuantityDbContext db;
+        public string SortOrder { get; set; }
+        public string SearchString { get; set; }
+
         public MeasuresRepository(QuantityDbContext c)
         {
             db = c;
@@ -29,10 +35,40 @@ namespace Abc.Infra.Quantity
         }
         public async Task<List<Measure>> Get()
         {
-            var l = await db.Measures.ToListAsync();
-            var list = new List<Measure>();
-            foreach (var e in l) list.Add(new Measure(e));
-            return list;
+            var list = await createFiltered(createSorted()).ToListAsync(); //sorteerimise algoritm
+            
+            return list.Select(e => new Measure(e)).ToList();
+        }
+
+        private IQueryable<MeasureData> createFiltered(IQueryable<MeasureData> set)
+        {
+            if (String.IsNullOrEmpty(SearchString)) return set;
+            {
+                return set.Where(s => s.Name.Contains(SearchString)
+                                       || s.Code.Contains(SearchString) || s.Id.Contains(SearchString) || s.Definition.Contains(SearchString) || s.ValidFrom.ToString().Contains(SearchString) || s.ValidTo.ToString().Contains(SearchString));
+            }
+        }
+
+        private IQueryable<MeasureData> createSorted() //paritav, saab paringuid genereerida, db sisaldab MeasureData classi
+        {
+
+            IQueryable<MeasureData> measures = from s in db.Measures select s;            
+            switch (SortOrder)
+            {
+                case "name_desc":
+                    measures = measures.OrderByDescending(s => s.Name);
+                    break;
+                case "Date":
+                    measures = measures.OrderBy(s => s.ValidFrom);
+                    break;
+                case "date_desc":
+                    measures = measures.OrderByDescending(s => s.ValidFrom);
+                    break;
+                default:
+                    measures = measures.OrderBy(s => s.Name);
+                    break;
+            }
+            return measures.AsNoTracking();
         }
 
         public async Task<Measure> Get(string id)

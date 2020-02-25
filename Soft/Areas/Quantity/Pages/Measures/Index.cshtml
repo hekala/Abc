@@ -1,5 +1,5 @@
 ﻿@page
-@model Soft.Areas.Quantity.Pages.Measures.IndexModel
+@model Abc.Soft.Areas.Quantity.Pages.Measures.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -10,20 +10,36 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name:
+            <input type="text" name="SearchString" value="@Model.SearchString" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Items[0].Name)
+                @Html.DisplayNameFor(model => model.Items[0].Code)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Items[0].Code)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.Items[0].Name)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Items[0].Definition)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Items[0].ValidFrom)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    @Html.DisplayNameFor(model => model.Items[0].ValidFrom)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Items[0].ValidTo)
@@ -32,29 +48,30 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Items) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Definition)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValidFrom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValidTo)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Definition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValidFrom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValidTo)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

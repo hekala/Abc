@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Facade.Quantity;
 using Abc.Domain.Quantity;
-using Pages;
+using Abc.Pages.Quantity;
 
-namespace Soft.Areas.Quantity.Pages.Measures
+namespace Abc.Soft.Areas.Quantity.Pages.Measures
 {
     public class CreateModel : MeasuresPage
     {
