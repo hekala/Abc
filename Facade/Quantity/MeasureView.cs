@@ -1,15 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Facade.Quantity
 {
     public class MeasureView
     {
+        [Required]
         public string Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Code { get; set; }
         public string Definition { get; set; }
         [DataType(DataType.Date)]
