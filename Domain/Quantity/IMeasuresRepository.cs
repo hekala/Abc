@@ -3,6 +3,5 @@
     public interface IMeasuresRepository : IRepository<Measure>
     {
        
-
     }
 }

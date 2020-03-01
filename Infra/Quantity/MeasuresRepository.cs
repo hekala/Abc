@@ -13,6 +13,10 @@ namespace Abc.Infra.Quantity
         protected internal QuantityDbContext db;
         public string SortOrder { get; set; }
         public string SearchString { get; set; }
+        public int PageSize { get; set; } = 1;
+        public int PageIndex { get; set; } = 1;
+        public bool HasNextPage { get; set; }
+        public bool HasPreviousPage { get; set; }
 
         public MeasuresRepository(QuantityDbContext c)
         {
@@ -35,9 +39,18 @@ namespace Abc.Infra.Quantity
         }
         public async Task<List<Measure>> Get()
         {
-            var list = await createFiltered(createSorted()).ToListAsync(); //sorteerimise algoritm
-            
+            var list = await createPaged(createFiltered(createSorted())); //sorteerimise algoritm
+
+            HasNextPage = list.HasNextPage;
+            HasPreviousPage = list.HasPreviousPage;
+
             return list.Select(e => new Measure(e)).ToList();
+        }
+
+        private async Task<PaginatedList<MeasureData>> createPaged(IQueryable<MeasureData> dataSet)
+        {            
+            return await PaginatedList<MeasureData>.CreateAsync(
+                dataSet, PageIndex, PageSize);
         }
 
         private IQueryable<MeasureData> createFiltered(IQueryable<MeasureData> set)
