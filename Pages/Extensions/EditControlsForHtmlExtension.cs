@@ -12,12 +12,12 @@ namespace Abc.Pages.Extensions
             this IHtmlHelper<TClassType> htmlHelper, Expression<Func<TClassType, TPropertyType>> expression)
         {
 
-            var s = htmlString(htmlHelper, expression);
+            var s = htmlStrings(htmlHelper, expression);
 
             return new HtmlContentBuilder(s);
         }
 
-        internal static List<object> htmlString<TClassType, TPropertyType>(IHtmlHelper<TClassType> htmlHelper, Expression<Func<TClassType, TPropertyType>> expression)
+        internal static List<object> htmlStrings<TClassType, TPropertyType>(IHtmlHelper<TClassType> htmlHelper, Expression<Func<TClassType, TPropertyType>> expression)
         {
             return new List<object>
             {
