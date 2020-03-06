@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Abc.Soft
+namespace Abc.Soft.Abc.Soft
 {
     internal class Data
     {

@@ -1,8 +1,7 @@
 using Abc.Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
-namespace Tests.Data.Common
+namespace Abc.Tests.Data.Common
 {
     [TestClass]
     public class DefinedDataTests : AbstractClassTest<DefinedEntityData, NamedEntityData>

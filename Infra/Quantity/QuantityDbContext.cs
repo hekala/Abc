@@ -9,7 +9,8 @@ namespace Abc.Infra.Quantity
             : base(options)
         {
         }
-        public DbSet<MeasureData> Measures { get; set; }
+
+       public DbSet<MeasureData> Measures { get; set; }
         public DbSet<UnitData> Units { get; set; }
         public DbSet<SystemOfUnitsData> SystemsOfUnits { get; set; }
         public DbSet<UnitFactorData> UnitFactors { get; set; }

@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Abc.Infra.Quantity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Abc.Infra.Quantity;
 
-namespace Soft.Data
+namespace Abc.Soft.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

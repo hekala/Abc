@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Facade.Quantity;
 using Abc.Domain.Quantity;
+using Abc.Facade.Quantity;
 using Abc.Pages.Quantity;
 
 namespace Abc.Soft.Areas.Quantity.Pages.Measures

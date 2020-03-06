@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Abc.Domain.Quantity;
-using Facade.Quantity;
+using Abc.Facade.Quantity;
 using Abc.Pages.Quantity;
 
 namespace Abc.Soft.Areas.Quantity.Pages.Measures
@@ -15,8 +15,9 @@ namespace Abc.Soft.Areas.Quantity.Pages.Measures
         public async Task OnGetAsync(string sortOrder,
             string currentFilter, string searchString, int? pageIndex)
         {
+            sortOrder = string.IsNullOrEmpty(sortOrder) ? "Name" : sortOrder; //kui on tuhi siis sorteerib nime jargi
             CurrentSort = sortOrder;
-            NameSort = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            NameSort = sortOrder == "Name" ? "Name_desc" : "Name";
             IdSort = sortOrder == "Id" ? "Id_desc" : "Id";
             CodeSort = sortOrder == "Code" ? "Code_desc" : "Code";
             DefinitionSort = sortOrder == " Definition" ? " Definition_desc" : " Definition";

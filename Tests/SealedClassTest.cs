@@ -1,8 +1,6 @@
-﻿using Abc.Data.Common;
-using Abc.Data.Quantity;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests
+namespace Abc.Tests
 {
     public abstract class SealedClassTest<TClass, TBaseClass>: ClassTest<TClass, TBaseClass> where TClass : new()
     {

@@ -2,7 +2,7 @@
 using Abc.Aids;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests
+namespace Abc.Tests
 {
     public abstract class BaseTest<TClass, TBaseClass> 
     {
@@ -33,5 +33,15 @@ namespace Tests
             set(d);
             Assert.AreEqual(d, get());
         }
+        protected static void isReadOnlyProperty(object o, string name, object expected)
+        {
+            var property = o.GetType().GetProperty(name); //objekti jargi saan tuubi, siis property nime
+            Assert.IsNotNull(property); //prop ei tohi olla null
+            Assert.IsFalse(property.CanWrite); //puudub setter
+            Assert.IsTrue(property.CanRead); //tal on olemas getter
+            var actual = property.GetValue(o);
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }

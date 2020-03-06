@@ -1,8 +1,8 @@
 ﻿using Abc.Domain.Quantity;
-using Facade.Quantity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
+using Abc.Facade.Quantity;
 
 namespace Abc.Pages.Quantity
 {

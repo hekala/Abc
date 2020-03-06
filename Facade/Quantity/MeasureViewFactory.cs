@@ -1,7 +1,7 @@
-﻿using Abc.Domain.Quantity;
-using Abc.Data.Quantity;
+﻿using Abc.Data.Quantity;
+using Abc.Domain.Quantity;
 
-namespace Facade.Quantity
+namespace Abc.Facade.Quantity
 {
     public static class MeasureViewFactory //static pole paritav!
     {

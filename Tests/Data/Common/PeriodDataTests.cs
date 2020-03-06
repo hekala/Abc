@@ -1,9 +1,7 @@
-using System;
-using System.Security.Cryptography.X509Certificates;
 using Abc.Data.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Data.Common
+namespace Abc.Tests.Data.Common
 {
     [TestClass]
     public class PeriodDataTests : AbstractClassTest<PeriodData, object>
