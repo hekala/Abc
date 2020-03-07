@@ -23,11 +23,20 @@ namespace Abc.Infra
         public string DescendingString => "_desc";
 
         protected SortedRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
-        protected internal IQueryable<TData> setSorting(IQueryable<TData> data) //kirjutab sql lause milles on sorteerimine sees
+
+        protected internal override IQueryable<TData> createSqlQuery() //kirjutan ule baserep meetodi!
+        {
+            var query = base.createSqlQuery(); //votab baasist query
+            query = addSorting(query); //lisab sorteerimise queryle
+
+            return query; //tagastab query
+        }
+
+        protected internal IQueryable<TData> addSorting(IQueryable<TData> query) //kirjutab sql lause milles on sorteerimine sees
         {
             var expression = createExpression();
 
-            var r = expression is null ? data : setOrderBy(data, expression);
+            var r = expression is null ? query : addOrderBy(query, expression);
 
             return r;
         }
@@ -63,17 +72,17 @@ namespace Abc.Infra
             return SortOrder;
         }
 
-        internal IQueryable<TData> setOrderBy(IQueryable<TData> data, Expression<Func<TData, object>> e)
+        internal IQueryable<TData> addOrderBy(IQueryable<TData> query, Expression<Func<TData, object>> e)
         {
-            if (data is null) return null;
-            if (e is null) return data; //kui e on null, aga data ei ole enam, siis annan data tagasi
+            if (query is null) return null;
+            if (e is null) return query; //kui e on null, aga data ei ole enam, siis annan data tagasi
             try
             {
-                return isDescending() ? data.OrderByDescending(e) : data.OrderBy(e); //kui data ja e molemad olemas
+                return isDescending() ? query.OrderByDescending(e) : query.OrderBy(e); //kui data ja e molemad olemas
             }
             catch
             {
-                return data;
+                return query;
             }
         }
 

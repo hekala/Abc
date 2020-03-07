@@ -14,32 +14,25 @@
       <FileName>Quantity\IMeasuresRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="Abc.Domain.Common.ICrudMethods">
-    <Position X="1.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ICrudMethods.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Interface Name="Abc.Domain.Common.IPaging" Collapsed="true">
     <Position X="3.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAUAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>IPaging.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Common\IPaging.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Abc.Domain.Common.ISorting">
-    <Position X="3.5" Y="2.25" Width="1.5" />
+    <Position X="3.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ISorting.cs</FileName>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\ISorting.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Abc.Domain.Common.ISearching">
-    <Position X="3.5" Y="1.25" Width="1.5" />
+    <Position X="3.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ISearching.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Common\ISearching.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
