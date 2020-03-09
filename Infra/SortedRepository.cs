@@ -5,13 +5,6 @@ using System.Reflection;
 using Abc.Data.Common;
 using Abc.Domain.Common;
 using Microsoft.EntityFrameworkCore;
-//TODO
-//case "ValidFrom":
-//measures = measures.OrderBy(s => s.ValidFrom);
-//break;
-//case "ValidFrom_desc":
-//measures = measures.OrderByDescending(s => s.ValidFrom);
-//break;
 
 namespace Abc.Infra
 {
