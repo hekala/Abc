@@ -10,17 +10,12 @@ namespace Abc.Soft.Areas.Quantity.Pages.Measures
     {
         public CreateModel(IMeasuresRepository r) : base(r) { }
 
-        public IActionResult OnGet() => Page();       
+        public IActionResult OnGet() => Page();
 
-
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync() //viisin osa koodi measurepagei (parem koht)
         {
-            if (!ModelState.IsValid) return Page();        
-           await data.Add(MeasureViewFactory.Create(Item));          
-
-           return RedirectToPage("./Index");
+            if (!await addObject()) return Page();
+            return RedirectToPage("./Index");
         }
     }
 }

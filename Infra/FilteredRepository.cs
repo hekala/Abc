@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
 using Abc.Data.Common;
 using Abc.Domain.Common;
 using Microsoft.EntityFrameworkCore;
@@ -11,9 +13,8 @@ namespace Abc.Infra
     {
         public string SearchString { get; set; }
 
-        protected FilteredRepository(DbContext c, DbSet<TData> s) : base(c, s)
-        {
-        }
+        protected FilteredRepository(DbContext c, DbSet<TData> s) : base(c, s) { } 
+        
         protected internal override IQueryable<TData> createSqlQuery() //overrideib baserep meetodi, nagu sortedRep!
         {
             var query = base.createSqlQuery();
@@ -22,9 +23,31 @@ namespace Abc.Infra
             return query;
         }
 
-        protected internal virtual IQueryable<TData> addFiltering(IQueryable<TData> query)
+        internal IQueryable<TData> addFiltering(IQueryable<TData> query)
         {
-            return query;
+            if (string.IsNullOrEmpty(SearchString)) return query;
+            var expression = createWhereExpression();
+
+            return query.Where(expression);
+        }
+
+        internal Expression<Func<TData, bool>> createWhereExpression()
+        {
+            var param = Expression.Parameter(typeof(TData), "s"); //millisest tuubist hakkad lambdaexp tegema
+            
+            Expression predicate = null;
+
+            foreach (var p in typeof(TData).GetProperties())
+            {
+                Expression body = Expression.Property(param, p);
+                if (p.PropertyType != typeof(string)) //otsib property
+                    body = Expression.Call(body, "ToString", null); //tostring meetod teeb stringiks kui pole string
+                body = Expression.Call(body, "Contains", null, Expression.Constant(SearchString)); //rakendab contains meetod
+                predicate = predicate is null ? body : Expression.Or(predicate, body);
+            }
+
+            return predicate is null ? null : Expression.Lambda<Func<TData, bool>>(predicate, param);
         }
     }
+
 }

@@ -11,11 +11,7 @@ namespace Abc.Soft.Areas.Quantity.Pages.Measures
         public DetailsModel(IMeasuresRepository r) : base(r) { }
         public async Task<IActionResult> OnGetAsync(string id)
         {
-            if (id == null) return NotFound();
-
-            Item = MeasureViewFactory.Create(await data.Get(id));
-
-            if (Item == null) return NotFound();          
+            await getObject(id);       
 
             return Page();
         }

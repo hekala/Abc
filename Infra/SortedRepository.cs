@@ -60,9 +60,8 @@ namespace Abc.Infra
         {
             if (string.IsNullOrEmpty(SortOrder)) return string.Empty;
             var idx = SortOrder.IndexOf(DescendingString, StringComparison.Ordinal);
-            if (idx >= 0) return SortOrder.Remove(idx);
-
-            return SortOrder;
+            
+            return idx > 0 ? SortOrder.Remove(idx) : SortOrder; //kui index suurem kui 0, siis votab koik al indeksist ara 
         }
 
         internal IQueryable<TData> addOrderBy(IQueryable<TData> query, Expression<Func<TData, object>> e)
