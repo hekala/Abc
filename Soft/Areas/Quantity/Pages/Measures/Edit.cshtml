@@ -7,9 +7,10 @@
 }
 
 <body>
-    @Html.EditControlsFor(model => model.Item.Code)
-    @Html.EditControlsFor(model => model.Item.Name)
-    @Html.EditControlsFor(model => model.Item.Definition)
-    @Html.EditControlsFor(model => model.Item.ValidFrom)
-    @Html.EditControlsFor(model => model.Item.ValidTo)
+<input type ="hidden" asp-for="Item.Id" /> 
+@Html.EditControlsFor(model => model.Item.Code)
+@Html.EditControlsFor(model => model.Item.Name)
+@Html.EditControlsFor(model => model.Item.Definition)
+@Html.EditControlsFor(model => model.Item.ValidFrom)
+@Html.EditControlsFor(model => model.Item.ValidTo)
 </body>

@@ -15,7 +15,7 @@ namespace Abc.Infra
 
         public bool HasNextPage => PageIndex < TotalPages; //lk indeks peab olema vaiksem kui lk arv, siis on veel jargm lk olemas
         public bool HasPreviousPage => PageIndex > 1; //siis on eelm lk olemas
-        public int PageSize { get; set; } = 5;
+        public int PageSize { get; set; } = 5; //5 kirjet lkl
 
         protected PaginatedRepository(DbContext c, DbSet<TData> s) : base(c, s) { }
 
