@@ -1,14 +1,13 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Abc.Domain.Quantity;
-using Abc.Facade.Quantity;
 using Abc.Pages.Quantity;
 
-namespace Abc.Soft.Areas.Quantity.Pages.Measures
+namespace Abc.Soft.Areas.Quantity.Pages.Units
 {
-    public class CreateModel : MeasuresPage
+    public class CreateModel : UnitsPage
     {
-        public CreateModel(IMeasureRepository r) : base(r) { }
+        public CreateModel(IUnitsRepository r) : base(r) { }
 
         public IActionResult OnGet() => Page();
 

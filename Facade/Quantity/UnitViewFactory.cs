@@ -1,13 +1,12 @@
 ﻿using Abc.Domain.Quantity;
-using System;
 
 namespace Abc.Facade.Quantity
 {
-    public static class MeasureViewFactory //static pole paritav!
+    public static class UnitViewFactory
     {
-        public static Measure Create(MeasureView v)
+        public static Unit Create(UnitView v)
         {
-            var o = new Measure
+            var o = new Unit
             {
                 Data =
                 {
@@ -22,9 +21,9 @@ namespace Abc.Facade.Quantity
 
             return o; 
         }
-        public static MeasureView Create(Measure o)
+        public static UnitView Create(Unit o)
         {
-            var v = new MeasureView
+            var v = new UnitView
             {
                 Id = o.Data.Id,
                 Name = o.Data.Name,

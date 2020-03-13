@@ -1,14 +1,13 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Abc.Domain.Quantity;
-using Abc.Facade.Quantity;
 using Abc.Pages.Quantity;
 
-namespace Abc.Soft.Areas.Quantity.Pages.Measures
+namespace Abc.Soft.Areas.Quantity.Pages.Units
 {
-    public class DeleteModel : MeasuresPage
+    public class DeleteModel : UnitsPage
     {
-        public DeleteModel(IMeasureRepository r) : base(r) { }
+        public DeleteModel(IUnitsRepository r) : base(r) { }
         public async Task<IActionResult> OnGetAsync(string id)
         {
             await getObject(id);
@@ -21,7 +20,6 @@ namespace Abc.Soft.Areas.Quantity.Pages.Measures
             await deleteObject(id);
 
             return RedirectToPage("./Index");
-        }
-
+        }        
     }
 }

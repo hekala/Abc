@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Abc.Domain.Quantity;
 using Abc.Pages.Quantity;
 
-namespace Abc.Soft.Areas.Quantity.Pages.Measures
+namespace Abc.Soft.Areas.Quantity.Pages.Units
 {
-    public class EditModel : MeasuresPage
+    public class EditModel : UnitsPage
     {
-        public EditModel(IMeasureRepository r) : base(r) { }
+        public EditModel(IUnitsRepository r) : base(r) { }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
