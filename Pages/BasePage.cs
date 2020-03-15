@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Abc.Aids;
-using Abc.Data.Quantity;
 using Abc.Domain.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace Abc.Pages
 {
     public abstract class BasePage<TRepository, TDomain, TView, TData>: PageModel
-    where TRepository: ICrudMethods<TDomain>, ISorting, ISearching, IPaging
+    where TRepository: ICrudMethods<TDomain>, ISorting, IFiltering, IPaging
     {
         private TRepository data;
 
@@ -26,11 +25,37 @@ namespace Abc.Pages
         public abstract string ItemId { get; }
 
 
-        public string PageTitle { get; set; } 
-        public string PageSubTitle { get; set; }
-        public string CurrentSort{ get; set; }
-        public string CurrentFilter{ get; set; } 
-        public string SearchString { get; set; }
+        public string PageTitle { get; set; }
+        public string PageSubTitle => getPageSubtitle();
+
+        protected internal virtual string getPageSubtitle()
+        {
+            return string.Empty;
+        }
+
+        public string FixedValue
+        {
+            get => data.FixedValue;
+            set => data.FixedValue = value;
+        }
+
+        public string FixedFilter
+        {
+            get => data.FixedFilter;
+            set => data.FixedFilter = value;
+        }
+
+        public string SortOrder
+        {
+            get => data.SortOrder;
+            set => data.SortOrder = value;
+        }
+
+        public string SearchString
+        {
+            get => data.SearchString;
+            set => data.SearchString = value;
+        }
 
         public bool HasPreviousPage => data.HasPreviousPage; //laheb kusib andmebaasi kaest
         public bool HasNextPage => data.HasNextPage;
@@ -89,38 +114,38 @@ namespace Abc.Pages
             
             var name = GetMember.Name(e); //aidsis tehtud meetod, annab expressioni katte
             string sortOrder;
-            if (string.IsNullOrEmpty(CurrentSort)) sortOrder = name;
-            else if (!CurrentSort.StartsWith(name)) sortOrder = name; //kui currentsort ei alga nimega, siis name
-            else if (CurrentSort.EndsWith("_desc")) sortOrder = name;
+            if (string.IsNullOrEmpty(SortOrder)) sortOrder = name;
+            else if (!SortOrder.StartsWith(name)) sortOrder = name; //kui currentsort ei alga nimega, siis name
+            else if (SortOrder.EndsWith("_desc")) sortOrder = name;
             else sortOrder = name + "_desc";
 
-            return $"{page}?sortOrder={sortOrder}&currentFilter={CurrentFilter}";
+            return $"{page}?sortOrder={sortOrder}&currentFilter={SearchString}";
         }
 
-        protected internal async Task getList(string sortOrder, string currentFilter, string searchString, int? pageIndex)
+        protected internal async Task getList(string sortOrder, string currentFilter, string searchString, int? pageIndex, string fixedFilter, string fixedValue)
         {
-            sortOrder = string.IsNullOrEmpty(sortOrder) ? "Name" : sortOrder; //kui on tuhi siis sorteerib nime jargi
-            CurrentSort = sortOrder;
-            
-            if (searchString != null)
-            {
-                pageIndex = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            CurrentFilter = searchString;
-
-            data.SortOrder = sortOrder;
-            SearchString = CurrentFilter;
-            data.SearchString = searchString;
-
+            FixedFilter = fixedFilter;
+            FixedValue = fixedValue;
+            SortOrder = sortOrder; //tuleb serveri poolt
+            SearchString = getSearchString(currentFilter, searchString, ref pageIndex); //currentf saadetaksekogu aeg serverist kliendile uuesti
             PageIndex = pageIndex ?? 1;
+            Items = await getList();
+        }
+        private string getSearchString(string currentFilter, string searchString, ref int? pageIndex)
+        {
+            if (searchString != null) { pageIndex = 1; }
+            else { searchString = currentFilter; }
+
+            return searchString;
+        }
+
+        internal async Task<List<TView>> getList()
+        {
             var l = await data.Get();
-            Items = new List<TView>();
-            foreach (var e in l) Items.Add(toView(e));
+            var list = new List<TView>();
+            foreach (var e in l) list.Add(toView(e));
+
+            return list;
         }
     }
 }

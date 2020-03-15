@@ -27,6 +27,12 @@ namespace Abc.Pages.Quantity
         public IEnumerable<SelectListItem> Measures { get; }
         public override string ItemId => Item.Id;
 
+        protected internal override string getPageSubtitle() //lahed details, show units, naitab for ... (valitud uniti nimi)!!!
+        {
+            return FixedValue is null 
+                ? base.getPageSubtitle() 
+                : $"For {GetMeasureName(FixedValue)}";
+        }
         protected internal override Unit toObject(UnitView view)
         {
             return UnitViewFactory.Create(view);
