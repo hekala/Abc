@@ -6,7 +6,7 @@ namespace Abc.Soft.Areas.Quantity.Pages.Units
 {
     public class IndexModel : UnitsPage
     {        
-        public IndexModel(IUnitsRepository r) : base(r) 
+        public IndexModel(IUnitsRepository r, IMeasuresRepository m) : base(r, m) 
         {
         }
        
@@ -14,7 +14,5 @@ namespace Abc.Soft.Areas.Quantity.Pages.Units
         {
             await getList(sortOrder, currentFilter, searchString, pageIndex);
         }
-
-       
     }
 }

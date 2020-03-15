@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Abc.Tests.Data.Quantity
 {
     [TestClass]
-    public class UnitFactorDataTests : SealedClassTest<UnitFactorData, PeriodData>
+    public class UnitFactorDataTests : SealedClassTests<UnitFactorData, PeriodData>
     {
         [TestMethod]
         public void FactorTest()

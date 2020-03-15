@@ -35,9 +35,13 @@ namespace Abc.Infra
         internal int getItemsCount() => base.createSqlQuery().CountAsync().Result; //result ehk saame asunkr meetodit kutsuda valja sunkr meetodis
         
         protected internal override IQueryable<TData> createSqlQuery() => addSkipAndTake(base.createSqlQuery()); //lisab skipi (see oli paginatedlist kirjas)
-    
-        private IQueryable<TData> addSkipAndTake(IQueryable<TData> query) => query.
-            Skip((PageIndex - 1) * PageSize)
+
+        private IQueryable<TData> addSkipAndTake(IQueryable<TData> query)
+        {
+            if (PageIndex < 1) return query;
+            return query
+                .Skip((PageIndex - 1) * PageSize)
                 .Take(PageSize);
+        }
     }
 }

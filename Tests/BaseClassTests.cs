@@ -4,10 +4,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Abc.Tests
 {
-    public abstract class BaseTest<TClass, TBaseClass> 
+    public abstract class BaseClassTests<TClass, TBaseClass>: BaseTests
     {
         protected TClass obj;
-        protected Type type;
 
         [TestInitialize]
         public virtual void TestInitialize()

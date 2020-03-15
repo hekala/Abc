@@ -9,6 +9,7 @@ namespace Abc.Facade.Common
         [DataType(DataType.Date)]
         [DisplayName("Valid from")]
         public DateTime? ValidFrom{ get; set; } //annab ainult nulli muidu
+
         [DataType(DataType.Date)] //tuleb lisada 
         [DisplayName("Valid to")]
         public DateTime? ValidTo { get; set; }

@@ -1,14 +1,13 @@
-using Abc.Data.Common;
+using Abc.Facade.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Abc.Tests.Data.Common
+namespace Abc.Tests.Facade.Common
 {
     [TestClass]
-    public class NamedEntityDataTests : AbstractClassTests<NamedEntityData, UniqueEntityData>
+    public class NamedViewTests : AbstractClassTests<NamedView, UniqueEntityView>
     {
-        private class testClass : NamedEntityData
-        {
-        }
+        private class testClass : NamedView { }
+        
         [TestInitialize]
 
         public override void TestInitialize()

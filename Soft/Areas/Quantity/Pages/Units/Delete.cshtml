@@ -7,8 +7,8 @@
 }
 
     <body>
-        @Html.DisplayControlsFor(m => m.Item.MeasureId)
-        @Html.DisplayControlsFor(m => m.Item.Code)  
+        @Html.DisplayControlsFor(m => m.Item.MeasureId, Model.GetMeasureName(Model.Item.MeasureId))
+        @Html.DisplayControlsFor(m => m.Item.Code)
         @Html.DisplayControlsFor(m => m.Item.Name)
         @Html.DisplayControlsFor(m => m.Item.Definition)
         @Html.DisplayControlsFor(m => m.Item.ValidFrom)

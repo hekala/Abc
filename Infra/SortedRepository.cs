@@ -44,7 +44,7 @@ namespace Abc.Infra
 
         internal Expression<Func<TData, object>> lambdaExpression(PropertyInfo p)
         { 
-            var param = Expression.Parameter(typeof(TData)); //millisest tuubist hakkad lambdaexp tegema
+            var param = Expression.Parameter(typeof(TData), "x"); //millisest tuubist hakkad lambdaexp tegema
             var property = Expression.Property(param, p); //sellest paramaeetrist see propertyinfo (s => s.ValidFrom)
             var body = Expression.Convert(property, typeof(object)); //converti kogu property mida sa saad tuubiks
             return Expression.Lambda<Func<TData, object>>(body, param); //kogu body pane niimoodi kaima et ta on lambdaexpression

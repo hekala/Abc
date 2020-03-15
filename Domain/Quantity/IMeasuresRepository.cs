@@ -2,7 +2,7 @@
 
 namespace Abc.Domain.Quantity
 {
-    public interface IMeasureRepository : IRepository<Measure>
+    public interface IMeasuresRepository : IRepository<Measure>
     {
        
     }

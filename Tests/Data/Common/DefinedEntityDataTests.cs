@@ -4,9 +4,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Abc.Tests.Data.Common
 {
     [TestClass]
-    public class UniqueEntityDataTests : AbstractClassTests<UniqueEntityData, PeriodData>
+    public class DefinedEntityDataTests : AbstractClassTests<DefinedEntityData, NamedEntityData>
     {
-        private class testClass : UniqueEntityData
+        private class testClass : DefinedEntityData
         {
         }
         [TestInitialize]
@@ -16,10 +16,11 @@ namespace Abc.Tests.Data.Common
             base.TestInitialize();
             obj = new testClass();
         }
+
         [TestMethod]
-        public void IdTest()
+        public void DefinitionTest()
         {
-            isNullableProperty(()=>obj.Id, x=> obj.Id=x);
+            isNullableProperty(()=>obj.Definition, x=> obj.Definition=x);
         }
     }
 }

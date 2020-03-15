@@ -9,7 +9,7 @@ namespace Abc.Soft.Areas.Quantity.Pages.Measures
 {
     public class IndexModel : MeasuresPage
     {        
-        public IndexModel(IMeasureRepository r) : base(r) {}
+        public IndexModel(IMeasuresRepository r) : base(r) {}
        
         public async Task OnGetAsync(string sortOrder, string currentFilter, string searchString, int? pageIndex)
         {

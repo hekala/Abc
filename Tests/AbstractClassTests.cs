@@ -2,7 +2,7 @@
 
 namespace Abc.Tests
 {
-    public abstract class AbstractClassTest<TClass, TBaseClass> : BaseTest<TClass, TBaseClass>
+    public abstract class AbstractClassTests<TClass, TBaseClass> : BaseClassTests<TClass, TBaseClass>
     {
         [TestMethod]
         public void IsAbstract()
