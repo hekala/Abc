@@ -9,9 +9,11 @@ namespace Abc.Soft.Areas.Quantity.Pages.Units
     public class DetailsModel : UnitsPage
     {
         public DetailsModel(IUnitsRepository r, IMeasuresRepository m) : base(r, m) { }
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(string id, string fixedFilter, string fixedValue)
         {
-            await getObject(id);       
+            FixedFilter = fixedFilter;
+            FixedValue = fixedValue;
+            await getObject(id);    
 
             return Page();
         }

@@ -11,12 +11,19 @@ namespace Abc.Soft.Areas.Quantity.Pages.Units
     {
         public CreateModel(IUnitsRepository r, IMeasuresRepository m) : base(r, m) { }
 
-        public IActionResult OnGet() => Page();
-
-        public async Task<IActionResult> OnPostAsync() //viisin osa koodi measurepagei (parem koht)
+        public IActionResult OnGet(string fixedFilter, string fixedValue)
         {
+            FixedFilter = fixedFilter;
+            FixedValue = fixedValue;
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync(string fixedFilter, string fixedValue) //viisin osa koodi measurepagei (parem koht)
+        {
+            FixedFilter = fixedFilter;
+            FixedValue = fixedValue;
             if (!await addObject()) return Page();
-            return RedirectToPage("./Index");
+            return Redirect($"/Quantity/Units/Index?fixedFilter={FixedFilter}&fixedValue={FixedValue}");
         }
     }
 }
