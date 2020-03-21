@@ -28,4 +28,8 @@
     <ProjectReference Include="..\Soft\Soft.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Extensions\" />
+  </ItemGroup>
+
 </Project>

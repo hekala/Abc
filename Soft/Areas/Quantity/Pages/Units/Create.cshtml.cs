@@ -20,10 +20,8 @@ namespace Abc.Soft.Areas.Quantity.Pages.Units
 
         public async Task<IActionResult> OnPostAsync(string fixedFilter, string fixedValue) //viisin osa koodi measurepagei (parem koht)
         {
-            FixedFilter = fixedFilter;
-            FixedValue = fixedValue;
-            if (!await addObject()) return Page();
-            return Redirect($"/Quantity/Units/Index?fixedFilter={FixedFilter}&fixedValue={FixedValue}");
+            if (!await addObject(fixedFilter, fixedValue)) return Page();
+            return Redirect(IndexUrl);
         }
     }
 }
