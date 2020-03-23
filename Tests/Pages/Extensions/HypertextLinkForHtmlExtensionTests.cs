@@ -9,7 +9,7 @@ namespace Abc.Tests.Pages.Extensions
         [TestInitialize] public virtual void TestInitialize() => type = typeof(HypertextLinkForHtmlExtension);
 
         [TestMethod]
-        public void HyperTextLinkForTest()
+        public void HypertextLinkForTest()
         {
             Assert.Inconclusive();
         }
