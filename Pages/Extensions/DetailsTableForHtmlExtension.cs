@@ -9,7 +9,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Abc.Pages.Extensions {
     public static class DetailsTableForHtmlExtension {
         public static IHtmlContent DetailsTableFor<TModel, TResult>(
-            this IHtmlHelper<TModel> htmlHelper, Expression<Func<TModel, IList<TResult>>> expression, params Expression<Func<TResult, object>>[] properties) where TModel: PageModel{
+            this IHtmlHelper<TModel> htmlHelper, Expression<Func<TModel, IList<TResult>>> expression, params Expression<Func<TResult, object>>[] properties) where TModel: PageModel
+        {
+            var htmlStrings = createString(htmlHelper, expression, properties);
+            return new HtmlContentBuilder(htmlStrings);
+        }
+
+        internal static IList<object> createString<TModel, TResult>(IHtmlHelper<TModel> htmlHelper, Expression<Func<TModel, IList<TResult>>> expression, Expression<Func<TResult, object>>[] properties) where TModel : PageModel
+        {
             var htmlStrings = new List<object>();
             var f = expression.Compile();
             var items = f(htmlHelper.ViewData.Model);
@@ -43,9 +50,8 @@ namespace Abc.Pages.Extensions {
                 htmlStrings.Add(new HtmlString("</tbody>"));
                 htmlStrings.Add(new HtmlString("</table>"));
                 htmlStrings.Add(new HtmlString("</dd>"));
-            };
-            return new HtmlContentBuilder(htmlStrings);
+            }
+            return htmlStrings;
         }
-
     }
 }

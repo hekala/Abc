@@ -8,8 +8,8 @@ namespace Abc.Pages.Extensions
 {
     public static class EditControlsForHtmlExtension
     {
-        public static IHtmlContent EditControlsFor<TClassType, TPropertyType>(
-            this IHtmlHelper<TClassType> htmlHelper, Expression<Func<TClassType, TPropertyType>> expression)
+        public static IHtmlContent EditControlsFor<TModel, TResult>(
+            this IHtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TResult>> expression)
         {
 
             var s = htmlStrings(htmlHelper, expression);
@@ -17,7 +17,7 @@ namespace Abc.Pages.Extensions
             return new HtmlContentBuilder(s);
         }
 
-        internal static List<object> htmlStrings<TClassType, TPropertyType>(IHtmlHelper<TClassType> htmlHelper, Expression<Func<TClassType, TPropertyType>> expression)
+        internal static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TResult>> expression)
         {
             return new List<object>
             {
