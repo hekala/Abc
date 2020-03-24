@@ -26,7 +26,7 @@ namespace Abc.Pages
 
 
         public string PageTitle { get; set; }
-        public string PageSubTitle => getPageSubtitle();
+        public string PageSubTitle => getPageSubTitle();
         public string IndexUrl => getIndexUrl();
 
         protected internal string getIndexUrl()
@@ -37,7 +37,7 @@ namespace Abc.Pages
 
         protected internal abstract string getPageUrl();
 
-        protected internal virtual string getPageSubtitle()
+        protected internal virtual string getPageSubTitle()
         {
             return string.Empty;
         }

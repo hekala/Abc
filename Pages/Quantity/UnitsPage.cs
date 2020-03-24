@@ -29,10 +29,10 @@ namespace Abc.Pages.Quantity
 
         protected internal override string getPageUrl() => "/Quantity/Units";
       
-        protected internal override string getPageSubtitle() //lahed details, show units, naitab for ... (valitud uniti nimi)!!!
+        protected internal override string getPageSubTitle() //lahed details, show units, naitab for ... (valitud uniti nimi)!!!
         {
             return FixedValue is null 
-                ? base.getPageSubtitle() 
+                ? base.getPageSubTitle() 
                 : $"For {GetMeasureName(FixedValue)}";
         }
         protected internal override Unit toObject(UnitView view)
