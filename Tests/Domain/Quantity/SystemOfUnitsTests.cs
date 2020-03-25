@@ -5,6 +5,5 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Abc.Tests.Domain.Quantity
 {
-    [TestClass]
-    public class UnitTests: SealedClassTests<Unit, Entity<UnitData>> { }
+    [TestClass] public class SystemOfUnitsTests: SealedClassTests<SystemOfUnits, Entity<SystemOfUnitsData>> { }
 }
