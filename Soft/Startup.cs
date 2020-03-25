@@ -34,6 +34,7 @@ namespace Abc.Soft
             services.AddRazorPages();
             services.AddScoped<IMeasuresRepository, MeasuresRepository>();
             services.AddScoped<IUnitsRepository, UnitsRepository>();
+            services.AddServerSideBlazor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +63,7 @@ namespace Abc.Soft
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
             });
         }
     }
