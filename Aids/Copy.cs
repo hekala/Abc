@@ -7,7 +7,7 @@
                 var name = property.Name;
                 var p = to.GetType().GetProperty(name);
                 var v = property.GetValue(from);
-                p?.SetValue(to, v);
+                p.SetValue(to, v);
             }
         }
 
