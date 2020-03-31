@@ -36,7 +36,7 @@ namespace Abc.Infra
         
         protected internal override IQueryable<TData> createSqlQuery() => addSkipAndTake(base.createSqlQuery()); //lisab skipi (see oli paginatedlist kirjas)
 
-        private IQueryable<TData> addSkipAndTake(IQueryable<TData> query)
+        internal IQueryable<TData> addSkipAndTake(IQueryable<TData> query)
         {
             if (PageIndex < 1) return query;
             return query
