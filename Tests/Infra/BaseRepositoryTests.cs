@@ -69,8 +69,7 @@ namespace Abc.Tests.Infra
             testArePropertyValuesEqual(data, expected.Data);
         }
 
-        [TestMethod]
-        public void UpdateTest()
+        [TestMethod] public void UpdateTest()
         {
             AddTest();
             var newData = GetRandom.Object<MeasureData>();
