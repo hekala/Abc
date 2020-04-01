@@ -12,7 +12,6 @@ namespace Abc.Infra
     {
         public int PageIndex { get; set; }
         public int TotalPages => getTotalPages(PageSize);
-
         public bool HasNextPage => PageIndex < TotalPages; //lk indeks peab olema vaiksem kui lk arv, siis on veel jargm lk olemas
         public bool HasPreviousPage => PageIndex > 1; //siis on eelm lk olemas
         public int PageSize { get; set; } = 5; //5 kirjet lkl
