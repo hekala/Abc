@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aids", "Aids\Aids.csproj", "{BD806F53-B007-4126-8139-7237F496FBF9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{EBEB4CB0-E8CC-4188-BEF2-B64098BCE447}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{BD806F53-B007-4126-8139-7237F496FBF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD806F53-B007-4126-8139-7237F496FBF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD806F53-B007-4126-8139-7237F496FBF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBEB4CB0-E8CC-4188-BEF2-B64098BCE447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBEB4CB0-E8CC-4188-BEF2-B64098BCE447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBEB4CB0-E8CC-4188-BEF2-B64098BCE447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBEB4CB0-E8CC-4188-BEF2-B64098BCE447}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
