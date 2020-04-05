@@ -21,7 +21,7 @@ namespace Abc.Infra.Quantity {
         }
 
         protected override string getId(UnitFactor obj) {
-            return obj?.Data is null ? string.Empty : $"{obj.Data.SystemOfUnitsId}:{obj.Data.UnitId}";
+            return obj?.Data is null ? string.Empty : $"{obj.Data.SystemOfUnitsId}.{obj.Data.UnitId}";
         }
     }
 }

@@ -1,9 +1,7 @@
 ﻿using System;
 using Abc.Aids;
 using Abc.Data.Common;
-using Abc.Data.Quantity;
 using Abc.Domain.Common;
-using Abc.Domain.Quantity;
 using Abc.Infra.Quantity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

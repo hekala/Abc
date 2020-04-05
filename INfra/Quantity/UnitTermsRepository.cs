@@ -22,7 +22,7 @@ namespace Abc.Infra.Quantity {
         }
 
         protected override string getId(UnitTerm obj) {
-            return obj?.Data is null ? string.Empty : $"{obj.Data.MasterId}:{obj.Data.TermId}";
+            return obj?.Data is null ? string.Empty : $"{obj.Data.MasterId}.{obj.Data.TermId}";
         }
     }
 }
