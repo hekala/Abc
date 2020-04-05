@@ -9,6 +9,5 @@ namespace Abc.Infra.Quantity
         //annab quantitydb cont katte!
 
         protected internal override Measure tDomainObject(MeasureData d) => new Measure(d); //annad saadud data d katte!
-
     }
 }

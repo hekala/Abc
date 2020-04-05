@@ -34,7 +34,7 @@ namespace Abc.Tests.Domain.Common
         public void DataIsNullTest()
         {
             var d = GetRandom.Object<MeasureData>();
-            Assert.IsNotNull(obj.Data); //kui midagi datale ei anna siis kas on 0
+            Assert.IsNull(obj.Data); //kui midagi datale ei anna siis kas on 0
             obj.Data = d;
             Assert.AreSame(d, obj.Data);
         }
@@ -42,7 +42,6 @@ namespace Abc.Tests.Domain.Common
         [TestMethod]
         public void CanSetNullDataTest()
         {
-            Assert.IsNotNull(obj.Data);
             obj.Data = null;
             Assert.IsNull(obj.Data); //nuud peab olema 0
         }

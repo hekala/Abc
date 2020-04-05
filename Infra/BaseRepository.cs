@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using Abc.Data.Common;
 using Abc.Domain.Common;
@@ -33,7 +32,7 @@ namespace Abc.Infra
 
         protected internal abstract TDomain tDomainObject(TData periodData);
 
-        internal async Task<List<TData>>runSqlQueryAsync(IQueryable<TData> query) => await query.AsNoTracking().ToListAsync();
+        internal async Task<List<TData>> runSqlQueryAsync(IQueryable<TData> query) => await query.AsNoTracking().ToListAsync();
         
         protected internal virtual IQueryable<TData> createSqlQuery() //virtual, peab laskma jargm ule kirjutada!
         {
@@ -48,7 +47,7 @@ namespace Abc.Infra
 
             var d = await getData(id);
 
-            var obj = new TDomain{Data = d};
+            var obj = tDomainObject(d);
 
             return obj;
         }
@@ -62,19 +61,20 @@ namespace Abc.Infra
             await db.SaveChangesAsync();
         }
         public async Task Delete(string id)
-        {           
-            var d = await dbSet.FindAsync(id);
+        { 
+            if (id is null) return; 
 
-            if (d is null) return; 
-            
-            dbSet.Remove(d);
+            var v = await getData(id);
+
+            if (v is null) return;
+            dbSet.Remove(v);
             await db.SaveChangesAsync();          
         }
 
         public async Task Update(TDomain obj)
         {
             if (obj is null) return; //kui 0  ei tee midagi
-            var v = await dbSet.FindAsync(getId(obj)); //otsin id ules
+            var v = await getData(getId(obj)); //otsin id ules
             if (v is null) return; //ei tee midagi
             dbSet.Remove(v);
             dbSet.Add(obj.Data);
