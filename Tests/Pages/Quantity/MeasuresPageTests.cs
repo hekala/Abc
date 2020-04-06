@@ -10,7 +10,7 @@ namespace Abc.Tests.Pages.Quantity
 {
     [TestClass]
     public class MeasuresPageTests : AbstractClassTests
-        <MeasuresPage, BasePage<IMeasuresRepository, Measure, MeasureView, MeasureData>>
+        <MeasuresPage, CommonPage<IMeasuresRepository, Measure, MeasureView, MeasureData>>
     {
         private class testClass : MeasuresPage
         {

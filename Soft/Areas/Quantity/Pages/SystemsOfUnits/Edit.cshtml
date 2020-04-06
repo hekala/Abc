@@ -8,9 +8,9 @@
 
 <body>
 <input type ="hidden" asp-for="Item.Id" /> 
-@Html.EditControlsFor(model => model.Item.Code)
-@Html.EditControlsFor(model => model.Item.Name)
-@Html.EditControlsFor(model => model.Item.Definition)
-@Html.EditControlsFor(model => model.Item.ValidFrom)
-@Html.EditControlsFor(model => model.Item.ValidTo)
+@Html.EditControlsFor(m => m.Item.Code)
+@Html.EditControlsFor(m => m.Item.Name)
+@Html.EditControlsFor(m => m.Item.Definition)
+@Html.EditControlsFor(m => m.Item.ValidFrom)
+@Html.EditControlsFor(m => m.Item.ValidTo)
 </body>

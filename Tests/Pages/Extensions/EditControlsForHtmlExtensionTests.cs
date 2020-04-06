@@ -2,7 +2,6 @@
 using Abc.Facade.Quantity;
 using Abc.Pages.Extensions;
 using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Abc.Tests.Pages.Extensions

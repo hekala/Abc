@@ -11,7 +11,7 @@ namespace Abc.Tests.Pages.Quantity
 {
     [TestClass]
     public class UnitsPageTests: AbstractClassTests
-        <UnitsPage, BasePage<IUnitsRepository, Unit, UnitView, UnitData>>
+        <UnitsPage, CommonPage<IUnitsRepository, Unit, UnitView, UnitData>>
     {
         private class testClass : UnitsPage
         {
