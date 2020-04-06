@@ -1,0 +1,21 @@
+﻿@page
+@model Abc.Soft.Areas.Quantity.Pages.SystemOfUnits.DetailsModel
+@using Abc.Aids
+@using Abc.Data.Quantity
+@using Abc.Pages.Extensions
+
+@{
+    Layout = "_Details";
+}
+
+<body>
+    @Html.DisplayControlsFor(model => model.Item.Code)
+    @Html.DisplayControlsFor(model => model.Item.Name)
+    @Html.DisplayControlsFor(model => model.Item.Definition)
+    @Html.DisplayControlsFor(model => model.Item.ValidFrom)
+    @Html.DisplayControlsFor(model => model.Item.ValidTo)
+</body>
+@section Details
+{
+    
+}

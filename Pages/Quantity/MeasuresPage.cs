@@ -4,7 +4,7 @@ using Abc.Facade.Quantity;
 
 namespace Abc.Pages.Quantity
 {
-    public abstract class MeasuresPage : BasePage<IMeasuresRepository, Measure, MeasureView, MeasureData>
+    public abstract class MeasuresPage : CommonPage<IMeasuresRepository, Measure, MeasureView, MeasureData>
     {
         protected internal MeasuresPage(IMeasuresRepository r = null): base(r)
         {

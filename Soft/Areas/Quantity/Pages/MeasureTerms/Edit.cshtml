@@ -1,0 +1,15 @@
+﻿@page
+@model Abc.Soft.Areas.Quantity.Pages.MeasureTerms.EditModel
+@using Abc.Pages.Extensions
+
+@{
+    Layout = "_Edit";
+}
+
+<body>
+@Html.EditControlsFor(model => model.Item.MasterId)
+@Html.EditControlsFor(model => model.Item.TermId)
+@Html.EditControlsFor(model => model.Item.Power)
+@Html.EditControlsFor(model => model.Item.ValidFrom)
+@Html.EditControlsFor(model => model.Item.ValidTo)
+</body>

@@ -1,5 +1,4 @@
-﻿
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Abc.Facade.Quantity
@@ -8,6 +7,11 @@ namespace Abc.Facade.Quantity
     {
         [Required]
         [DisplayName("Measure")]
-        public string MasterId { get; set; } 
+        public string MasterId { get; set; }
+
+        public string GetId()
+        {
+            return $"{MasterId}.{TermId}";
+        } 
     }
 }

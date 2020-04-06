@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Abc.Pages.Quantity
 {
-    public abstract class UnitsPage: BasePage<IUnitsRepository, Unit, UnitView, UnitData>
+    public abstract class UnitsPage: CommonPage<IUnitsRepository, Unit, UnitView, UnitData>
     {
         protected internal UnitsPage(IUnitsRepository r, IMeasuresRepository m): base(r)
         {
