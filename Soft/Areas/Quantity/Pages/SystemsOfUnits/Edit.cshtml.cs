@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Abc.Domain.Quantity;
 using Abc.Pages.Quantity;
 
-namespace Abc.Soft.Areas.Quantity.Pages.SystemOfUnits
+namespace Abc.Soft.Areas.Quantity.Pages.SystemsOfUnits
 {
     public class EditModel : SystemsOfUnitsPage
     {
