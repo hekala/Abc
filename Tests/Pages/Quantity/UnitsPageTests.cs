@@ -18,9 +18,9 @@ namespace Abc.Tests.Pages.Quantity
             internal testClass(IUnitsRepository r, IMeasuresRepository m) : base(r, m) { }
         }
 
-        private class unitsRepository : baseTestRepository<Unit, UnitData>, IUnitsRepository { }
+        private class unitsRepository : baseTestRepositoryForUniqueEntity<Unit, UnitData>, IUnitsRepository { }
 
-        private class measuresRepository : baseTestRepository<Measure, MeasureData>, IMeasuresRepository { } //fake repo klass
+        private class measuresRepository : baseTestRepositoryForUniqueEntity<Measure, MeasureData>, IMeasuresRepository { } //fake repo klass
 
         private unitsRepository units;
         private measuresRepository measures;

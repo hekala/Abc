@@ -41,6 +41,6 @@
         public const string RatesPageTitle = "Day Rates";
         public const string PaymentMethodsPageTitle = "Payment Methods";
         public const string CalculatorPageTitle = "Calculator";
+        public const string SelectLinkTitle = "Select";
     }
-
 }

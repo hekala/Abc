@@ -14,17 +14,29 @@ namespace Abc.Tests.Pages.Quantity
     {
         private class testClass : MeasuresPage
         {
-            internal testClass(IMeasuresRepository r) : base(r) { }
+            internal testClass(IMeasuresRepository r, IMeasureTermsRepository t) : base(r, t) { }
         }
 
-        private class testRepository : baseTestRepository<Measure, MeasureData>, IMeasuresRepository { } //fake repo klass
+        private class testRepository : baseTestRepositoryForUniqueEntity<Measure, MeasureData>, IMeasuresRepository { } //fake repo klass
+        private class termRepository :  baseTestRepositoryForPeriodEntity<MeasureTerm, MeasureTermData>,
+            IMeasureTermsRepository{
+            protected override bool isThis(MeasureTerm entity, string id)
+            {
+                return true;
+            }
 
+            protected override string getId(MeasureTerm entity)
+            {
+                return string.Empty;
+            }
+        }
         [TestInitialize]
         public override void TestInitialize()
         {
             base.TestInitialize(); //kasutab inmemorydb extensionit, mis on malus!
             var r = new testRepository();
-            obj = new testClass(r); //annan repository katte
+            var t = new termRepository();
+            obj = new testClass(r, t); //annan repository katte
         }
 
         [TestMethod] public void ItemIdTest()

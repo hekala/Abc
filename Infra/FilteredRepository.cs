@@ -31,22 +31,22 @@ namespace Abc.Infra
             var expression = createFixedWhereExpression();
             return (expression is null)? query: query.Where(expression);
         }
-
-        internal Expression<Func<TData, bool>> createFixedWhereExpression()
-        {
-            if (string.IsNullOrWhiteSpace(FixedValue)) return null;
-            if (string.IsNullOrWhiteSpace(FixedFilter)) return null;
+        private Expression<Func<TData, bool>> createFixedWhereExpression() {
+            if (FixedFilter is null) return null;
+            if (FixedValue is null) return null;
             var param = Expression.Parameter(typeof(TData), "s");
-
+            
             var p = typeof(TData).GetProperty(FixedFilter);
 
-            if (p is null) return null; //kui filtrit pole siis midagi
+            if (p is null) return null;
             Expression body = Expression.Property(param, p);
-            if (p.PropertyType != typeof(string)) //otsib property
-                body = Expression.Call(body, "ToString", null); //tostring meetod teeb stringiks kui pole string
-            body = Expression.Call(body, "Contains", null, Expression.Constant(FixedValue)); //rakendab contains meetod
+            if (p.PropertyType != typeof(string))
+                body = Expression.Call(body, "ToString", null);
+            body = Expression.Equal(
+                body,
+                Expression.Constant(FixedValue));
             var predicate = body;
-            
+
             return Expression.Lambda<Func<TData, bool>>(predicate, param);
         }
 

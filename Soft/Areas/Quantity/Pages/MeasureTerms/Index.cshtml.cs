@@ -6,7 +6,7 @@ namespace Abc.Soft.Areas.Quantity.Pages.MeasureTerms
 {
     public class IndexModel : MeasureTermsPage
     {        
-        public IndexModel(IMeasureTermsRepository r) : base(r) {}
+        public IndexModel(IMeasureTermsRepository r, IMeasuresRepository m) : base(r, m) {}
        
         public async Task OnGetAsync(string sortOrder, string currentFilter, string searchString, int? pageIndex, string fixedFilter, string fixedValue)
         {
