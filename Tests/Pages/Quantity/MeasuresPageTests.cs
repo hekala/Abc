@@ -19,7 +19,7 @@ namespace Abc.Tests.Pages.Quantity
 
         private class testRepository : baseTestRepositoryForUniqueEntity<Measure, MeasureData>, IMeasuresRepository { } //fake repo klass
         private class termRepository :  baseTestRepositoryForPeriodEntity<MeasureTerm, MeasureTermData>,
-            IMeasureTermsRepository{
+            IMeasureTermsRepository {
             protected override bool isThis(MeasureTerm entity, string id)
             {
                 return true;
@@ -54,20 +54,28 @@ namespace Abc.Tests.Pages.Quantity
         [TestMethod] 
         public void PageUrlTest() => Assert.AreEqual("/Quantity/Measures", obj.PageUrl);
 
-        [TestMethod]
-        public void ToObjectTest()
+        [TestMethod] public void ToObjectTest()
         {
             var view = GetRandom.Object<MeasureView>();
             var o = obj.toObject(view);
             testArePropertyValuesEqual(view, o.Data);
         }
-
-        [TestMethod]
-        public void ToViewTest()
+        [TestMethod] public void ToViewTest()
         {
             var data = GetRandom.Object<MeasureData>();
             var view = obj.toView(new Measure(data));
             testArePropertyValuesEqual(view, data);
         }
+        [TestMethod] public void LoadDetailsTest()
+        {
+            var v = GetRandom.Object<MeasureView>();
+           obj.LoadDetails(v);
+           Assert.IsNotNull(obj.Terms);
+        }
+        [TestMethod] public void TermsTest()
+        {
+            isReadOnlyProperty(obj, nameof(obj.Terms), obj.Terms);
+        }
+
     }
 }

@@ -7,8 +7,8 @@
 }
 
 <body>
-    @Html.EditControlsFor(m => m.Item.MasterId)
-    @Html.EditControlsFor(m => m.Item.TermId)
+    @Html.EditControlsForDropDown(m => m.Item.MasterId, Model.Units)
+    @Html.EditControlsForDropDown(m => m.Item.TermId, Model.Units)
     @Html.EditControlsFor(m => m.Item.Power)
     @Html.EditControlsFor(m => m.Item.ValidFrom)
     @Html.EditControlsFor(m => m.Item.ValidTo)

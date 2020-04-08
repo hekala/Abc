@@ -7,9 +7,7 @@ namespace Abc.Tests.Pages.Extensions
     public class DisplayControlsForHtmlExtensionTests: BaseTests
     {
         [TestInitialize] public virtual void TestInitialize() => type = typeof(DisplayControlsForHtmlExtension);
-
-        [TestMethod]
-        public void DisplayControlsForTest()
+        [TestMethod] public void DisplayControlsForTest()
         {
             Assert.Inconclusive();
         }

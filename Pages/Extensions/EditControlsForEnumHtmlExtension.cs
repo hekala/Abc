@@ -18,7 +18,7 @@ namespace Abc.Pages.Extensions {
             return new HtmlContentBuilder(htmlStrings);
         }
 
-        private static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TResult>> expression, SelectList selectList) {
+        internal static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TResult>> expression, SelectList selectList) {
             return new List<object> {
                 new HtmlString("<div class=\"form-group\">"),
                 htmlHelper.LabelFor(expression, new {@class = "text-dark"}),

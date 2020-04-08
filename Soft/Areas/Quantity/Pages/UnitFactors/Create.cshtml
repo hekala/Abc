@@ -6,10 +6,10 @@
     Layout = "_Create"; 
 }
 
-<body>
-    @Html.EditControlsFor(m => m.Item.SystemOfUnitsId)
-    @Html.EditControlsFor(m => m.Item.UnitId)
+    <body>
+    @Html.EditControlsForDropDown(m => m.Item.SystemOfUnitsId, Model.SystemsOfUnits)
+    @Html.EditControlsForDropDown(m => m.Item.UnitId, Model.Units)
     @Html.EditControlsFor(m => m.Item.Factor)
     @Html.EditControlsFor(m => m.Item.ValidFrom)
     @Html.EditControlsFor(m => m.Item.ValidTo)
-</body>
+    </body>

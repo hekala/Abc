@@ -1,4 +1,5 @@
-﻿using Abc.Data.Quantity;
+﻿using System.Collections.Generic;
+using Abc.Data.Quantity;
 using Abc.Domain.Quantity;
 using Abc.Facade.Quantity;
 
@@ -10,6 +11,7 @@ namespace Abc.Pages.Quantity
         {
             PageTitle = "Unit Factors";
         }
+
         public override string ItemId 
         {
             get
